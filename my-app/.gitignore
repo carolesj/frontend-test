@@ -7,3 +7,5 @@ assets
 yarn-error.log
 
 .eslintcache
+
+yarn.lock

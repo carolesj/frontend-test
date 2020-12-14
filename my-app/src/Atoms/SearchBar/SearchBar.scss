@@ -1,0 +1,21 @@
+@import "Common/Styles/index.scss";
+
+.SearchBar {
+    display: flex;
+    background-color: $light-red;
+    width: 1000px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.SearchIcon {
+    padding-left: 20px;
+    padding-right: 12px;
+    padding-top: 9px;
+}
+
+.InputField {
+    background-color: $light-red;
+    border: none;
+    color: $red;
+}

@@ -1,10 +1,12 @@
 import './App.scss';
+import PageHeader from 'Molecules/PageHeader'
 import HeroCard from 'Molecules/HeroCard';
 
 function App() {
   return (
     <div className="App">
-        <HeroCard/>
+        <PageHeader />
+        <HeroCard />
     </div>
   );
 }

@@ -17,6 +17,12 @@
   src: url("./Assets/Work_Sans/static/WorkSans-SemiBold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "WorkSans";
+  font-weight: bolder;
+  src: url("./Assets/Work_Sans/static/WorkSans-ExtraBold.ttf") format("truetype");
+}
+
 html {
   font-size: $smallest-text-size;
   color: $grey;
@@ -32,4 +38,10 @@ h2 {
   font-size: $medium-text-size;
   color: $dark-grey;
   font-weight: 600;
+}
+
+h3 {
+  font-size: $small-text-size;
+  color: $dark-grey;
+  font-weight: bolder;
 }
