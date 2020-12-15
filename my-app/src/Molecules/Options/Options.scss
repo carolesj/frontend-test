@@ -1,0 +1,22 @@
+@import "Common/Styles/index.scss";
+
+.Options {
+    display: flex;
+    width: 40%;
+    &__text-hero {
+        color: $red;
+        padding-left: 8px;
+        padding-right: 16px;
+    }
+    &__text-liked {
+        color: $red;
+        padding-left: 16px;
+    }
+    &__clickables {
+        display: flex;
+        padding-left: 32px;
+    }
+    &__heart {
+        fill: $red;
+    }
+}

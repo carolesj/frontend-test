@@ -1,0 +1,12 @@
+.SearchResults {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 64px;
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        margin: 64px;
+    }
+}
