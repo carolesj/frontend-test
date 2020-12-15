@@ -1,13 +1,14 @@
 import './App.scss';
 import PageHeader from 'Molecules/PageHeader'
-import HeroCard from 'Molecules/HeroCard';
+import Card from 'Molecules/Card';
 
 function App() {
   return (
     <div className="App">
         <PageHeader />
         <PageHeader isHeroPage/>
-        <HeroCard />
+        <Card isHero={true} heroName={'Heroi'} isFavorite={true} />
+        <Card isHero={false} comicName={'Quadrinho'} />
     </div>
   );
 }
