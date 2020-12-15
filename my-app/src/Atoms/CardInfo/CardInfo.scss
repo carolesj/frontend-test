@@ -1,6 +1,6 @@
 @import "Common/Styles/index.scss";
 
-.HeroInfo {
+.CardInfo {
     display: flex;
     justify-content: space-between;
     padding-top: 16px;
@@ -11,7 +11,7 @@
             fill: $red;
         }
     }
-    &__hero-name {
+    &__name {
         @include truncate($width: 80%);
     }
 }
