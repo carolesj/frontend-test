@@ -3,4 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 64px;
+    &--hero-page {
+        padding-bottom: 0px;
+    }
 }
