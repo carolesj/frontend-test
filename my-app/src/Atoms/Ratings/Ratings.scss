@@ -1,0 +1,11 @@
+@import "Common/Styles/index.scss";
+
+.HeroStats {
+    display: flex;
+    &__star {
+        fill: $empty-star-red;
+        &--filled {
+            fill: $filled-star-red;
+        }
+    }
+}
