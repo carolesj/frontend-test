@@ -2,10 +2,8 @@
 
 .HeroStats {
     display: flex;
-    &--stat-with-icon {
-        display: flex;
-        justify-content: space-between;
-    }
+    justify-content: space-between;
+    align-items: center;
     &__stat-value {
         padding-left: 8px;
     }

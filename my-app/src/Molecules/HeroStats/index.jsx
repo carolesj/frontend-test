@@ -9,28 +9,28 @@ const HeroStats = ({comicsCount, moviesCount, rating, lastComic}) => {
 
     return (
         <div>
-            <div className='HeroStats--stat-with-icon'>
+            <div className='HeroStats HeroStats--stat-with-icon'>
                 <div>
-                    <span className='HeroStats__stat-with-icon-name'>Quadrinhos</span>
+                    <p className='HeroStats__stat-with-icon-name'>Quadrinhos</p>
                     <div className='HeroStats'>
                         <Comic />
                         <span className='HeroStats__stat-value'>{comicsCount}</span>
                     </div>
                 </div>
                 <div>
-                    <span className='HeroStats__stat-with-icon-name'>Filmes</span>
+                    <p className='HeroStats__stat-with-icon-name'>Filmes</p>
                     <div className='HeroStats'>
                         <Video />
                         <span className='HeroStats__stat-value'>{moviesCount}</span>
                     </div>
                 </div>
             </div>
-            <div className='HeroStats'>
-                <span className='HeroStats__stat-name'>Rating:</span>
+            <div className='HeroStats HeroStats--stat-with-content'>
+                <p className='HeroStats__stat-name'>Rating:</p>
                 <Rating rating={rating} />
             </div>
-            <div className='HeroStats'>
-                <span className='HeroStats__stat-name'>Último quadrinho: </span>
+            <div className='HeroStats HeroStats--stat-with-content'>
+                <p className='HeroStats__stat-name'>Último quadrinho: </p>
                 <span>{lastComic}</span>
             </div>
         </div>
