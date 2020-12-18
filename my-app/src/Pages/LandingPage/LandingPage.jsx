@@ -4,20 +4,24 @@ import Header from 'Molecules/PageHeader';
 import SearchResults from 'Templates/SearchResults';
 import Footer from 'Atoms/PageFooter';
 
-const LandingPage = ({isHeroPage}) => (
+const LandingPage = ({isHeroPage, count, content}) => (
   <div>
     <Header isHeroPage={isHeroPage}/>
-    <SearchResults />
+    <SearchResults isHeroPage={isHeroPage} count={count} content={content}/>
     <Footer />
   </div>
 );
 
 export default LandingPage;
 
-LandingPage.propTypes = {
-  isHeroPage: PropTypes.bool
+SearchResults.propTypes = {
+  isHeroPage: PropTypes.bool,
+  count: PropTypes.number,
+  content: PropTypes.string
 };
 
-LandingPage.defaultProps = {
-  isHeroPage: false
+SearchResults.defaultProps = {
+  isHeroPage: false,
+  count: 0,
+  content: ''
 };
