@@ -1,0 +1,16 @@
+@import "Common/Styles/index.scss";
+
+.CompleteHeroInfo {
+    width: 30%;
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__heart-icon {
+        fill: $white;
+        &--filled {
+            fill: $red;
+        }
+    }
+}

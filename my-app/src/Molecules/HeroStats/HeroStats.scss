@@ -1,0 +1,16 @@
+@import "Common/Styles/index.scss";
+
+.HeroStats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__stat-value {
+        padding-left: 8px;
+    }
+    &__stat-name {
+        padding-right: 8px;
+    }
+    &__stat-with-icon-name {
+        padding-bottom: 16px;
+    }
+}

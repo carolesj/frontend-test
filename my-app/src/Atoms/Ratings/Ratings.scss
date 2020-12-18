@@ -1,0 +1,11 @@
+@import "Common/Styles/index.scss";
+
+.Ratings {
+    display: flex;
+    &__star {
+        fill: $empty-star-red;
+        &--filled {
+            fill: $filled-star-red;
+        }
+    }
+}
