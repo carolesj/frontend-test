@@ -3,7 +3,7 @@
 .SearchBar {
     display: flex;
     width: 60%;
-    height: 50px;
+    height: 60px;
     background-color: $light-red;
     border-radius: 50px;
 
@@ -14,7 +14,7 @@
     }
 
     &__search-icon {
-        padding-top: 14px;
+        padding-top: 20px;
         padding-left: 20px;
         padding-right: 12px;
         &--hero-page {
