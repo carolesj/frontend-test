@@ -72,6 +72,7 @@ function App() {
       onSetFavorite={onSetFavorite}
       setSelectedHeroId={setSelectedHeroId}
       setFavoriteResults={setFavoriteResults}
+      setComics={setComics}
     />
   );
 

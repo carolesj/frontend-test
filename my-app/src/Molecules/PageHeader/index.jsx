@@ -5,11 +5,11 @@ import AboutPage from 'Atoms/AboutPage';
 import SearchBar from 'Atoms/SearchBar';
 import './PageHeader.scss';
 
-const PageHeader = ({selectedHeroId, setSelectedHeroId}) => (
+const PageHeader = ({selectedHeroId, setSelectedHeroId, setComics}) => (
   <div
     className={classNames('PageHeader', {'PageHeader--hero-page': !!selectedHeroId})}
   >
-    <AboutPage selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId} />
+    <AboutPage selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId} setComics={setComics} />
     <SearchBar selectedHeroId={selectedHeroId} />
   </div>
 );
@@ -18,7 +18,8 @@ export default PageHeader;
 
 PageHeader.propTypes = {
   selectedHeroId: PropTypes.string,
-  setSelectedHeroId:PropTypes.func.isRequired
+  setSelectedHeroId:PropTypes.func.isRequired,
+  setComics: PropTypes.func.isRequired
 };
 
 PageHeader.defaultProps = {
