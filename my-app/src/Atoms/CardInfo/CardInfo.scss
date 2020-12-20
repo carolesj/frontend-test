@@ -1,16 +1,24 @@
 @import "Common/Styles/index.scss";
 
 .CardInfo {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 16px;
-    &__heart-icon {
-        fill: $white;
-        &--filled {
-            fill: $red;
-        }
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+  &__heart-icon {
+    cursor: pointer;
+    fill: $white;
+    &--filled {
+      fill: $red;
     }
-    &__name {
-        @include truncate($width: 80%);
+    &--disabled {
+      cursor: not-allowed;
     }
+  }
+  &__hero-name {
+    @include truncate($width: 80%);
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

@@ -9,6 +9,7 @@ const parseHeroes = (heroes=[]) => (
       id: hero.id,
       thumbnail: getThumbnail(hero.thumbnail),
       name: hero.name,
+      description: hero.description,
     }
   }), {})
 );

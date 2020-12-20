@@ -4,37 +4,74 @@ import OptionsBar from 'Organisms/OptionsBar';
 import Card from 'Molecules/Card'
 import './SearchResults.scss';
 
-const SearchResults = ({isHeroPage, count, content}) => {
-  const heroes = Object.values(content);
+const SearchResults = ({heroResults, comicResults, favorites, onSetFavorite, setSelectedHeroId, setFavoriteResults}) => {
+  const comics = Object.values(comicResults);
+  const heroes = Object.values(heroResults);
 
-  return (
-    <div className='SearchResults'>
-      {!isHeroPage ? <OptionsBar /> : <h2>Últimos lançamentos</h2>}
-      <div className='SearchResults__container'>
-        {count > 0 ? 
-          <div className='SearchResults__list'>
-            {
-              heroes.map(hero => (
-                <Card isHero={!isHeroPage} heroName={hero.name} imgUrl={hero.thumbnail} isFavorite={false}/>
-              ))
-            }
-          </div> : <p>Não foram encontrados resultados para essa busca</p>
-        }
+  if (!!comics?.length) {
+    return (
+      <div className='SearchResults'>
+        <div className='SearchResults__container'>
+          {comics?.length > 0 ? 
+            <div className='SearchResults__list'>
+              {
+                comics.map(comic => (
+                  <Card
+                    comic={comic}
+                    imgUrl={comic.thumbnail}
+                    onSetFavorite={onSetFavorite}
+                  />
+                ))
+              }
+            </div> : <p>Não foram encontrados quadrinhos para esse herói</p>
+          }
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (
+      <div className='SearchResults'>
+        <OptionsBar
+          heroResults={heroResults}
+          setFavoriteResults={setFavoriteResults} 
+        />
+        <div className='SearchResults__container'>
+          {heroes?.length > 0 ? 
+            <div className='SearchResults__list'>
+              {
+                heroes.map(hero => (
+                  <Card
+                  isHero
+                  hero={hero}
+                  imgUrl={hero.thumbnail}
+                  onSetFavorite={onSetFavorite}
+                  favorites={favorites}
+                  setSelectedHeroId={setSelectedHeroId}
+                />
+                ))
+              }
+            </div> : <p>Não foram encontrados resultados para essa busca</p>
+          }
+        </div>
+      </div>
+    )
+  }
+  
 };
 
 export default SearchResults;
 
 SearchResults.propTypes = {
-  isHeroPage: PropTypes.bool,
-  count: PropTypes.number,
-  content: PropTypes.string
+  heroResults: PropTypes.object,
+  comicResults: PropTypes.object,
+  favorites: PropTypes.array, 
+  onSetFavorite: PropTypes.func.isRequired,
+  setSelectedHeroId: PropTypes.func.isRequired,
+  setFavoriteResults: PropTypes.func.isRequired
 };
 
 SearchResults.defaultProps = {
-  isHeroPage: false,
-  count: 0,
-  content: ''
+  heroResults: {},
+  comicResults: {},
+  favorites: [] 
 };
