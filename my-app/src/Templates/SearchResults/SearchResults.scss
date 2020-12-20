@@ -1,12 +1,17 @@
 .SearchResults {
     display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin-top: 64px;
+    flex-direction: column;
+    align-content: center;
+    margin: 64px;
     &__container {
         display: flex;
-        flex-direction: column;
-        align-content: center;
-        margin: 64px;
+        justify-content: center;
+        margin-top: 64px;
+    }
+    &__list {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 90%;
     }
 }
