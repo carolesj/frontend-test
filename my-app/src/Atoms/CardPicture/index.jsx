@@ -1,31 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './CardPicture.scss';
-import placeHolder from 'Assets/Icons/blacksquare.png';
 
-const CardPicture = ({imgUrl, isHero}) => {
-    const [hasError, setHasError] = useState(true);
-
-    useEffect(() => {
-        if (imgUrl) setHasError(false);
-    }, [imgUrl]);
-
+const CardPicture = ({imgUrl, isHero, heroName}) => {
+    const pictureAlt = useMemo(()=> isHero ? 'Comic cover' : heroName, [isHero, heroName]);
     return (
         <div className={classNames('CardPicture', {'CardPicture--hero': isHero})}>
-            {hasError ? <img src={placeHolder} alt="Card Picture"/> : "Loaded"}
+            <img src={imgUrl} alt={pictureAlt} />
         </div>
     );
 }
 
 CardPicture.propTypes = {
     imgUrl: PropTypes.string,
-    isHero: PropTypes.bool
+    isHero: PropTypes.bool,
+    heroName: PropTypes.string
 }
 
 CardPicture.defaultProps = {
     imgUrl: null,
-    isHero: true
+    isHero: true,
+    heroName: ''
 }
 
 export default CardPicture;
