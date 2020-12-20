@@ -1,19 +1,18 @@
 {
   "files": {
-    "main.css": "/frontend-test/static/css/main.f3f8dac9.chunk.css",
-    "main.js": "/frontend-test/static/js/main.dbcdb744.chunk.js",
-    "main.js.map": "/frontend-test/static/js/main.dbcdb744.chunk.js.map",
-    "runtime-main.js": "/frontend-test/static/js/runtime-main.99fea78f.js",
-    "runtime-main.js.map": "/frontend-test/static/js/runtime-main.99fea78f.js.map",
-    "static/js/2.7d522964.chunk.js": "/frontend-test/static/js/2.7d522964.chunk.js",
-    "static/js/2.7d522964.chunk.js.map": "/frontend-test/static/js/2.7d522964.chunk.js.map",
-    "static/js/3.a0144fd5.chunk.js": "/frontend-test/static/js/3.a0144fd5.chunk.js",
-    "static/js/3.a0144fd5.chunk.js.map": "/frontend-test/static/js/3.a0144fd5.chunk.js.map",
+    "main.css": "/frontend-test/static/css/main.6b6f3ea2.chunk.css",
+    "main.js": "/frontend-test/static/js/main.c8dde2b6.chunk.js",
+    "main.js.map": "/frontend-test/static/js/main.c8dde2b6.chunk.js.map",
+    "runtime-main.js": "/frontend-test/static/js/runtime-main.63af9e35.js",
+    "runtime-main.js.map": "/frontend-test/static/js/runtime-main.63af9e35.js.map",
+    "static/js/2.73fb1950.chunk.js": "/frontend-test/static/js/2.73fb1950.chunk.js",
+    "static/js/2.73fb1950.chunk.js.map": "/frontend-test/static/js/2.73fb1950.chunk.js.map",
+    "static/js/3.dc51a023.chunk.js": "/frontend-test/static/js/3.dc51a023.chunk.js",
+    "static/js/3.dc51a023.chunk.js.map": "/frontend-test/static/js/3.dc51a023.chunk.js.map",
     "index.html": "/frontend-test/index.html",
-    "static/css/main.f3f8dac9.chunk.css.map": "/frontend-test/static/css/main.f3f8dac9.chunk.css.map",
-    "static/js/2.7d522964.chunk.js.LICENSE.txt": "/frontend-test/static/js/2.7d522964.chunk.js.LICENSE.txt",
+    "static/css/main.6b6f3ea2.chunk.css.map": "/frontend-test/static/css/main.6b6f3ea2.chunk.css.map",
+    "static/js/2.73fb1950.chunk.js.LICENSE.txt": "/frontend-test/static/js/2.73fb1950.chunk.js.LICENSE.txt",
     "static/media/Comic.9c1570ae.svg": "/frontend-test/static/media/Comic.9c1570ae.svg",
-    "static/media/Group.77d3c46d.png": "/frontend-test/static/media/Group.77d3c46d.png",
     "static/media/Heart.1f3e0f0e.svg": "/frontend-test/static/media/Heart.1f3e0f0e.svg",
     "static/media/Logo.dbc0acb1.svg": "/frontend-test/static/media/Logo.dbc0acb1.svg",
     "static/media/SearchIcon.de3d7fd3.svg": "/frontend-test/static/media/SearchIcon.de3d7fd3.svg",
@@ -23,9 +22,9 @@
     "static/media/App.scss": "/frontend-test/static/media/WorkSans-SemiBold.8cad3c8f.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.99fea78f.js",
-    "static/js/2.7d522964.chunk.js",
-    "static/css/main.f3f8dac9.chunk.css",
-    "static/js/main.dbcdb744.chunk.js"
+    "static/js/runtime-main.63af9e35.js",
+    "static/js/2.73fb1950.chunk.js",
+    "static/css/main.6b6f3ea2.chunk.css",
+    "static/js/main.c8dde2b6.chunk.js"
   ]
 }
