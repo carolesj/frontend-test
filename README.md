@@ -4,7 +4,7 @@ O site Marvel Search Heroes é como uma base de dados de heróis Marvel, onde vo
 
 ## Como posso utilizar no meu computador? :thinking:
 
-Atualmente o Marvel Search Heroes está hospedado no github pages, e você pode acessar através deste [link](carolesj.github.io/frontend-test/).
+Atualmente o Marvel Search Heroes está hospedado no github pages, e você pode acessar através deste [link](https://carolesj.github.io/frontend-test/).
 
 Caso você queira **rodar localmente** a aplicação, vamos passar por alguns passos:
 
@@ -33,7 +33,7 @@ Você pode descompactar o arquivo baixado atráves da interface gráfica do seu 
   unzip /path/to/ngrok.zip
 ```
 
-Rode o seguinte comando substituindo o trecho indicado pelo seu token de autorização:
+Rode o seguinte comando dentro da pasta descompactada, substituindo o trecho indicado pelo seu token de autorização:
 
 ```
   ./ngrok authtoken <your_auth_token>
@@ -70,7 +70,25 @@ Depois, em outra instância do seu terminal, rode:
 
 Por fim abra o link https que o ngrok retorna e você poderá ver como a aplicação se comporta.
 
-# Luizalabs Frontend Challenge
+
+
+## Decisões de Projeto
+
+### Organização
+
+A organização dos componentes dentro do projeto segue aquela proposta no **Atomic Design**, sobre a qual você pode saber mais [aqui](https://bradfrost.com/blog/post/atomic-web-design/).
+
+Em resumo, no Atomic Design, nossos componentes são separados por nível de complexidade. Os mais simples ficam disponíveis em **Atoms** e os mais elaborados em **Pages**. Podemos usar os mais simples como blocos para montar os mais complexos e também podemos adicionar mais a eles.
+
+O motivo dessa escolha é o fato de que, dessa forma, é fácil de compreender onde o necessário estará: se você está desenvolvendo um componente em Molecules e precisa de um bloco mais simples, ele com certeza estará em Atoms. Isso torna o processo de desenvolvimento mais eficiente e menos custoso (no sentido cognitivo) e facilita o entendimento do código para quem não participou do processo de desenvolvimento.
+
+### Padronização
+
+Foram utilizadas algumas ferramentas para manter a padronização do código e de commits.
+
+O [Husky](https://github.com/typicode/husky) foi uma delas, utilizado em conjunto com outras 3. 
+
+
 
 ### Objetivo
 Desenvolver uma aplicação de listagem e detalhe de personagens de quadrinhos.
