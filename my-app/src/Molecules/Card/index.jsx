@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames'
 import CardInfo from 'Atoms/CardInfo';
 import CardPicture from 'Atoms/CardPicture';
 import './Card.scss';
