@@ -4,7 +4,14 @@ import classNames from 'classnames';
 import {ReactComponent as HeartIcon} from 'Assets/Icons/Heart.svg'
 import './CardInfo.scss'
 
-const CardInfo = ({isHero, name, heroId, onSetFavorite, favorites, setSelectedHeroId}) => (
+const CardInfo = ({
+    isHero,
+    name,
+    heroId,
+    onSetFavorite,
+    favorites,
+    setSelectedHeroId
+}) => (
   <div className='CardInfo'>
     {isHero ? 
       <>
@@ -46,6 +53,7 @@ CardInfo.propTypes = {
   isHero: PropTypes.bool,
   name: PropTypes.string,
   heroId: PropTypes.string,
+  favorites: PropTypes.array,
   onSetFavorite: PropTypes.func.isRequired,
   setSelectedHeroId: PropTypes.func.isRequired
 };
@@ -53,7 +61,8 @@ CardInfo.propTypes = {
 CardInfo.defaultProps = {
   isHero: false,
   name: '',
-  heroId: ''
+  heroId: '',
+  favorites: []
 };
 
 export default CardInfo;

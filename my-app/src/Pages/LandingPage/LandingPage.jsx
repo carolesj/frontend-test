@@ -19,7 +19,11 @@ const LandingPage = ({
     setComics
   }) => (
   <div className={classNames({'LandingPage': !! selectedHeroId})}>
-    <Header selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId} setComics={setComics}/>
+    <Header
+      selectedHeroId={selectedHeroId}
+      setSelectedHeroId={setSelectedHeroId}
+      setComics={setComics}
+    />
     {selectedHeroId && <CompleteHeroInfo hero={heroResults[selectedHeroId]} />} 
     <SearchResults
       selectedHeroId={selectedHeroId}

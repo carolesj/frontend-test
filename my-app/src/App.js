@@ -2,12 +2,10 @@ import React, {useState, useEffect, useCallback} from 'react';
 import Axios from 'axios';
 import './App.scss';
 import LandingPage from 'Pages/LandingPage/LandingPage.jsx';
-import PageHeader from 'Molecules/PageHeader'
-import Card from 'Molecules/Card';
-import CompleteHeroInfo from 'Organisms/CompleteHeroInfo';
 import {parseHeroes, parseComics} from 'Common/Utils';
 
 function App() {
+  // Calls heroes to set up the landing page
   const [heroes, setHeroes] = useState();
   useEffect(() => {
     Axios.get('https://gateway.marvel.com/v1/public/characters', {params:{
@@ -16,12 +14,12 @@ function App() {
     }}).then((response) => {
       setHeroes(parseHeroes(response.data.data.results));
     }).catch(() => {
-      console.log('Hero error');
+      console.log('Error in setHeroes');
     });
   }, []);
 
+  // Saves the favorites selected by the user and enables filtering
   const [favorites, setFavorites] = useState([]);
-
   const onSetFavorite = useCallback(heroId => {
     if ((favorites.length < 5) && !favorites.includes(heroId)) {
       setFavorites([...favorites, heroId]);
@@ -31,8 +29,8 @@ function App() {
     }
   }, [favorites, setFavorites]);
 
+  // 
   const [selectedHeroId, setSelectedHeroId] = useState();
-
   const [comics, setComics] = useState();
   useEffect(() => {
     if (selectedHeroId) {
@@ -42,17 +40,16 @@ function App() {
         limit: 10
       }}).then((response) => {
         setComics(parseComics(response.data.data.results));
-        console.log('Comics set');
       }).catch(() => {
-        console.log('comics error');
+        console.log('Error on setComics');
       });
     }
   }, [selectedHeroId]);
 
   const [favoriteHeroes, setFavoriteHeroes] = useState();
+
+  // Controlls whether Favorites or All Heroes should be shown
   const [shouldShowFavoriteHeroes, setShouldShowFavoriteHeroes] = useState(false);
-
-
   useEffect(() => {
     if (favoriteHeroes && !shouldShowFavoriteHeroes) {
       setFavoriteHeroes(undefined);
@@ -69,6 +66,7 @@ function App() {
     }
   }, [heroes, favoriteHeroes, favorites, shouldShowFavoriteHeroes]);
 
+  // Controls toggle usage
   const onChange = shouldSortByName => {
     const sortBy = shouldSortByName ? {} : {orderBy: 'modified'};
     Axios.get('https://gateway.marvel.com/v1/public/characters', {params:{

@@ -19,7 +19,9 @@ const Ratings = ({rating}) => {
     <div className='Ratings'>
       {
         filledStars.map(filledStar => (
-          <div className={classNames('Ratings__star', {'Ratings__star--filled': filledStar})}>
+          <div className={
+            classNames('Ratings__star', {'Ratings__star--filled': filledStar})
+          }>
             <Star />
           </div>
         ))

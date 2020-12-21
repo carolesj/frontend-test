@@ -5,7 +5,13 @@ import {ReactComponent as HeartIcon} from 'Assets/Icons/Heart.svg';
 import HeroStats from 'Molecules/HeroStats';
 import './CompleteHeroInfo.scss';
 
-const CompleteHeroInfo = ({hero, comic, count, favorites, onSetFavorite}) => (
+const CompleteHeroInfo = ({
+  hero,
+  comic,
+  count,
+  favorites,
+  onSetFavorite
+}) => (
   
   <div className='CompleteHeroInfo'>
     <div className='CompleteHeroInfo__information'>

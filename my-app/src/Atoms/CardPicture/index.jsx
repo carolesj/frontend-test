@@ -4,7 +4,9 @@ import classNames from 'classnames';
 import './CardPicture.scss';
 
 const CardPicture = ({isHero, imgUrl, name}) => (
-  <div className={classNames('CardPicture', {'CardPicture--hero': isHero})}>
+  <div className={
+    classNames('CardPicture', {'CardPicture--hero': isHero})
+  }>
     <img src={imgUrl} alt={name} />
   </div>
 );
