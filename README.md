@@ -4,7 +4,7 @@ O site Marvel Search Heroes é como uma base de dados de heróis Marvel, onde vo
 
 ## Como posso utilizar no meu computador? :thinking:
 
-Atualmente o Marvel Search Heroes está hospedado no github pages, e você pode acessar através deste [link](carolesj.github.io/frontend-test/).
+Atualmente o Marvel Search Heroes está hospedado no github pages, e você pode acessar no *carolesj.github.io/frontend-test*.
 
 Caso você queira **rodar localmente** a aplicação, vamos passar por alguns passos:
 
@@ -33,7 +33,7 @@ Você pode descompactar o arquivo baixado atráves da interface gráfica do seu 
   unzip /path/to/ngrok.zip
 ```
 
-Rode o seguinte comando substituindo o trecho indicado pelo seu token de autorização:
+Rode o seguinte comando dentro da pasta descompactada, substituindo o trecho indicado pelo seu token de autorização:
 
 ```
   ./ngrok authtoken <your_auth_token>
@@ -49,6 +49,8 @@ Crie então um arquivo chamado **.env** no diretório **my-app**. Em seu conteú
 ```
   REACT_APP_MARVEL_API_PUBLIC_KEY = <SUA CHAVE PÚBLICA>
 ```
+
+Nessa mesma área do site, não se esqueça de adicionar ***.ngrok.io** aos domínios autorizados a utilizarem a chave para fazer chamadas.
 
 :warning: **Atenção**: Caso deseje fazer alterações a este projeto ou sua própria versão dele, lembre-se de **não** adicionar o arquivo **.env** ao github e de **jamais** compartilhar sua chave privada.
 
@@ -69,6 +71,63 @@ Depois, em outra instância do seu terminal, rode:
 ```
 
 Por fim abra o link https que o ngrok retorna e você poderá ver como a aplicação se comporta.
+
+
+
+## Decisões de Projeto :heavy_check_mark:
+
+### Organização
+
+A organização dos componentes dentro do projeto segue aquela proposta no **Atomic Design**, sobre a qual você pode saber mais [aqui](https://bradfrost.com/blog/post/atomic-web-design/).
+
+Em resumo, no Atomic Design, nossos componentes são separados por nível de complexidade. Os mais simples ficam disponíveis em **Atoms** e os mais elaborados em **Pages**. Podemos usar os mais simples como blocos para montar os mais complexos e também podemos adicionar mais a eles.
+
+O motivo dessa escolha é o fato de que, dessa forma, é fácil de compreender onde o necessário estará: se você está desenvolvendo um componente em Molecules e precisa de um bloco mais simples, ele com certeza estará em Atoms. Isso torna o processo de desenvolvimento mais eficiente e menos custoso (no sentido cognitivo) e facilita o entendimento do código para quem não participou do processo de desenvolvimento.
+
+### Padronização
+
+Foram utilizadas algumas ferramentas para manter a padronização do código e de commits.
+
+O [Husky](https://github.com/typicode/husky), que é uma ferramenta que possibilita uma forma simples de se utilizar git hooks, foi uma delas, utilizado em conjunto com outras 3: [lint-staged](https://github.com/okonet/lint-staged), que permite rodar um linter (no caso o Eslint) em arquivos staged, melhorando a qualidade do código enviado ao git; [commitlint](https://github.com/conventional-changelog/commitlint), que possibilita definir um padrão a ser seguido nas mensagens de commit e o [commitizen](https://github.com/commitizen/cz-cli) que, configurado com os mesmos padrões do commit lint, orienta a montagem de commits, podendo receber a resposta para perguntas estruturadas e montando a mensagem de commit ao final.
+
+### Organização
+
+De forma geral, foram utilizadas issues e projects do github para fazer a organização do projeto. 
+
+A organização pessoal, com links importantes e anotações foi feita através do Notion.
+
+### Stack
+
+Conforme definido na especificação, o projeto foi desenvolvido em React (com a utilização de hooks para reduzir a replicação de código e pela facilidade para refatorar, já que o projeto deveria ser desenvolvido de forma rápida) e também contou com a utilização de Sass.
+
+
+## To do :exclamation:
+
+### Stats de heróis
+
+Como não consegui encontrar qual chamada da API retornava alguns dos stats de heróis (como número de filmes), deixei essa funcionalidade para o final, e acabei não conseguindo colocar os stats para os quais as chamadas eu conhecia (como data da última aparição e número total de quadrinhos em que aparece). Isso deverá ser adicionado depois.
+
+### Paginação
+
+### Persistência com Store
+
+### Gerenciamento de estado
+
+Como o projeto não era muito longo, a decisão de deixar o gerenciamento de estados para o final, caso sobrasse tempo, foi tomada.
+
+Quando ele for implementado, será feito utilizando a context API.
+
+### Testes
+
+Devido ao tempo de desenvolvimento, não foi possível cumprir com o requisito extra de testes antes da data de entrega.
+
+Quando eles forem implementados, utilizarei Jest em conjunto com RTL para testes unitários e de integração e Cypress para testes end to end.
+
+### CI/CD
+
+Pode ser facilmente implementada uma rotina, utilizando Actions do GitHub, que rode automaticamente alguns dos testes supracitados antes do merge e, assim que os testes passarem, permita o merge e faça automaticamente o deploy para o github pages.
+
+
 
 # Luizalabs Frontend Challenge
 
