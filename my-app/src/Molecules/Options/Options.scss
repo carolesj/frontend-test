@@ -2,6 +2,7 @@
 
 .Options {
   display: flex;
+  align-items: center;
   &__text-hero {
     color: $red;
     padding-left: 8px;
@@ -21,5 +22,8 @@
   }
   &__heart {
     fill: $red;
+  }
+  &__toggle {
+    padding-top: 4px;
   }
 }

@@ -4,7 +4,7 @@ import OptionsBar from 'Organisms/OptionsBar';
 import Card from 'Molecules/Card'
 import './SearchResults.scss';
 
-const SearchResults = ({heroResults, comicResults, favorites, onSetFavorite, setSelectedHeroId, setFavoriteResults}) => {
+const SearchResults = ({heroResults, comicResults, favorites, onSetFavorite, setSelectedHeroId, setShouldShowFavoriteHeroes, onChange}) => {
   const comics = Object.values(comicResults);
   const heroes = Object.values(heroResults);
 
@@ -33,7 +33,8 @@ const SearchResults = ({heroResults, comicResults, favorites, onSetFavorite, set
       <div className='SearchResults'>
         <OptionsBar
           heroResults={heroResults}
-          setFavoriteResults={setFavoriteResults} 
+          setShouldShowFavoriteHeroes={setShouldShowFavoriteHeroes}
+          onChange={onChange}
         />
         <div className='SearchResults__container'>
           {heroes?.length > 0 ? 
@@ -67,7 +68,7 @@ SearchResults.propTypes = {
   favorites: PropTypes.array, 
   onSetFavorite: PropTypes.func.isRequired,
   setSelectedHeroId: PropTypes.func.isRequired,
-  setFavoriteResults: PropTypes.func.isRequired
+  setShouldShowFavoriteHeroes: PropTypes.func.isRequired
 };
 
 SearchResults.defaultProps = {

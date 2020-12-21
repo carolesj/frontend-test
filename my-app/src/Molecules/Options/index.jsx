@@ -5,12 +5,14 @@ import {ReactComponent as HeroIcon} from 'Assets/Icons/Superhero.svg';
 import {ReactComponent as Liked} from 'Assets/Icons/Heart.svg';
 import './Options.scss';
 
-const Options = ({favorites, setFavoriteResults}) => (
+const Options = ({setShouldShowFavoriteHeroes, onChange}) => (
   <div className='Options'>
     <div className='Options__clickables'>
       <HeroIcon />
       <span className='Options__text-hero'> Ordenar por nome - A/Z </span>
-      <Toggle />
+      <div className='Options__toggle'>
+        <Toggle onChange={onChange} defaultChecked={false} />
+      </div>
     </div>
     <div className='Options__clickables'>
       <div className='Options__heart'>
@@ -18,7 +20,7 @@ const Options = ({favorites, setFavoriteResults}) => (
       </div>
       <span 
         className='Options__text-liked'
-        onClick={() => setFavoriteResults(favorites)}
+        onClick={setShouldShowFavoriteHeroes}
         role='link'
         tabIndex={0}
       > 
@@ -31,10 +33,5 @@ const Options = ({favorites, setFavoriteResults}) => (
 export default Options;
 
 Options.propTypes = {
-  favorites: PropTypes.array,
-  setFavoriteResults: PropTypes.func.isRequired
-}
-
-Options.defaultProps = {
-  favorites: []
+  setShouldShowFavoriteHeroes: PropTypes.func.isRequired
 }
