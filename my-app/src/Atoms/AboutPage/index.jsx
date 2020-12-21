@@ -4,7 +4,11 @@ import classNames from 'classnames';
 import {ReactComponent as Logo} from 'Assets/Logo/Logo.svg';
 import './AboutPage.scss';
 
-const AboutPage = ({selectedHeroId, setSelectedHeroId, setComics}) => (
+const AboutPage = ({
+    selectedHeroId,
+    setSelectedHeroId,
+    setComics
+}) => (
   <div className={classNames('AboutPage', {'AboutPage--hero-page': !!selectedHeroId})}>
     {!!selectedHeroId ? 
       <Logo

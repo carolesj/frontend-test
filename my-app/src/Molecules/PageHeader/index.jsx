@@ -7,9 +7,15 @@ import './PageHeader.scss';
 
 const PageHeader = ({selectedHeroId, setSelectedHeroId, setComics}) => (
   <div
-    className={classNames('PageHeader', {'PageHeader--hero-page': !!selectedHeroId})}
+    className={
+      classNames('PageHeader', {'PageHeader--hero-page': !!selectedHeroId})
+    }
   >
-    <AboutPage selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId} setComics={setComics} />
+    <AboutPage
+      selectedHeroId={selectedHeroId}
+      setSelectedHeroId={setSelectedHeroId}
+      setComics={setComics}
+    />
     <SearchBar selectedHeroId={selectedHeroId} />
   </div>
 );

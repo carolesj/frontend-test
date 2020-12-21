@@ -5,12 +5,28 @@ import CardInfo from 'Atoms/CardInfo';
 import CardPicture from 'Atoms/CardPicture';
 import './Card.scss';
 
-const Card = ({comic, hero, favorites, onSetFavorite, setSelectedHeroId}) => {
+const Card = ({
+    comic,
+    hero,
+    favorites,
+    onSetFavorite,
+    setSelectedHeroId
+}) => {
   if (hero) {
     return (
       <div className='Card'>
-        <CardPicture isHero name={hero.name} imgUrl={hero.thumbnail} />
-        <CardInfo isHero name={hero.name} heroId={hero.id} onSetFavorite={onSetFavorite} setSelectedHeroId={setSelectedHeroId} favorites={favorites}/>
+        <CardPicture 
+          isHero name={hero.name}
+          imgUrl={hero.thumbnail}
+        />
+        <CardInfo
+          isHero
+          name={hero.name}
+          heroId={hero.id}
+          onSetFavorite={onSetFavorite}
+          setSelectedHeroId={setSelectedHeroId}
+          favorites={favorites}
+        />
       </div>
     );
   } else {
