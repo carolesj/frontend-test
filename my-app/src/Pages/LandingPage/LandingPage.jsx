@@ -15,7 +15,8 @@ const LandingPage = ({
     onSetFavorite,
     setSelectedHeroId,
     setShouldShowFavoriteHeroes,
-    onChange
+    onChange,
+    setComics
   }) => (
   <div className={classNames({'LandingPage': !! selectedHeroId})}>
     <Header selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId} setComics={setComics}/>
@@ -42,7 +43,8 @@ SearchResults.propTypes = {
   favorites: PropTypes.array,
   onSetFavorite: PropTypes.func.isRequired,
   setSelectedHeroId: PropTypes.func.isRequired,
-  setShouldShowFavoriteHeroes: PropTypes.func.isRequired
+  setShouldShowFavoriteHeroes: PropTypes.func.isRequired,
+  setComics: PropTypes.func.isRequired
 };
 
 SearchResults.defaultProps = {

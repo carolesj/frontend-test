@@ -33,7 +33,6 @@ function App() {
 
   const [selectedHeroId, setSelectedHeroId] = useState();
 
-  //OnSetFavorite
   const [comics, setComics] = useState();
   useEffect(() => {
     if (selectedHeroId) {
@@ -94,19 +93,10 @@ function App() {
         setShouldShowFavoriteHeroes(!shouldShowFavoriteHeroes)
       )}
       onChange={onChange}
+      setComics={setComics}
     />
   );
 
-  /*return (
-    <div className="App">
-        <LandingPage isHeroPage={false} count={20} content={''}/>
-        <LandingPage isHeroPage={true} count={20} content={''} heroName={'Clovis Cleivison'} isFavorite={true} heroDescription='IAUHDIAHSIDHASIODHA ISOU DHIAUSH DUISHDIU AHOSIUDASHU IDHSAI UDHOAS IHDOI ASHDOIA SHDOIASH DIOUASH DUIASHDSHUDSA IAUHDIAHSIDHASIODHA ISOU DHIAUSH DUISHDIU AHOSIUDASHU IDHSAI UDHOAS IHDOI ASHDOIA SHDOIASH DIOUASH DUIASHDSHUDSA IAUHDIAHSIDHASIODHA ISOU DHIAUSH DUISHDIU AHOSIUDASHU IDHSAI UDHOAS IHDOI ASHDOIA SHDOIASH DIOUASH DUIASHDSHUDSA IAUHDIAHSIDHASIODHA ISOU DHIAUSH DUISHDIU AHOSIUDASHU IDHSAI UDHOAS IHDOI ASHDOIA SHDOIASH DIOUASH DUIASHDSHUDSA' comicsCount={666} moviesCount={13} rating={4.2} lastComic={'1 abr 1914'}/>
-        <PageHeader isHeroPage/>
-        <Card isHero={false} comicName={'Quadrinho'} />
-        <CompleteHeroInfo heroName='Murasakibara' isFavorite heroDescription='IAUHDIAHSIDHASIODHA ISOU DHIAUSH DUISHDIU AHOSIUDASHU IDHSAI UDHOAS IHDOI ASHDOIA SHDOIASH DIOUASH DUIASHDSHUDSA' comicsCount={10} moviesCount={5} rating={3.75} lastComic='4 jan 2020' onHeartClick={()=> {}} />
-
-    </div>
-  );*/
 }
 
 export default App;
