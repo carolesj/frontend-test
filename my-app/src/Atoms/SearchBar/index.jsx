@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import {ReactComponent as SearchIcon} from 'Assets/Icons/SearchIcon.svg';
 import './SearchBar.scss'
 
-const SearchBar = ({selectedHeroId, onEnter}) => {
+const SearchBar = ({selectedHeroId, searchByName}) => {
   return (
     <div 
       className={
@@ -33,7 +33,7 @@ const SearchBar = ({selectedHeroId, onEnter}) => {
         name='heroName'
         placeholder='Procure por heróis'
         maxLength='256'
-        onKeyDown={onEnter}
+        onChange={e => searchByName(e.target.value)}
       />
     </div>
   );
@@ -43,7 +43,7 @@ export default SearchBar;
 
 SearchBar.propTypes = {
   selectedHeroId: PropTypes.string,
-  onEnter: PropTypes.func.isRequired
+  searchByName: PropTypes.func.isRequired
 }
 
 SearchBar.defaultProps = {
