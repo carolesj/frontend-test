@@ -41,7 +41,7 @@ function App() {
       }}).then((response) => {
         setComics(parseComics(response.data.data.results));
       }).catch(() => {
-        console.log('Error on setComics');
+        console.log('Error in setComics');
       });
     }
   }, [selectedHeroId]);
@@ -75,7 +75,21 @@ function App() {
     }}).then((response) => {
       setHeroes(parseHeroes(response.data.data.results));
     }).catch(() => {
-      console.log('Hero error');
+      console.log('Error in onChange');
+    })
+  };
+
+  // Controls search by name
+  const searchByName = searchTerm => {
+    console.log()
+    const searchBy = searchTerm ? {nameStartsWith: `${searchTerm}`} : {};
+    Axios.get('https://gateway.marvel.com/v1/public/characters', {params:{
+      apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY,
+      ...searchBy
+    }}).then((response) => {
+      setHeroes(parseHeroes(response.data.data.results));
+    }).catch(() => {
+      console.log('Error in searchByName');
     })
   };
 
@@ -92,6 +106,7 @@ function App() {
       )}
       onChange={onChange}
       setComics={setComics}
+      searchByName={searchByName}
     />
   );
 
