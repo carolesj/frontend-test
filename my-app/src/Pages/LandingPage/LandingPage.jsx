@@ -7,9 +7,9 @@ import SearchResults from 'Templates/SearchResults';
 import Footer from 'Atoms/PageFooter';
 import './LandingPage.scss';
 
-const LandingPage = ({selectedHeroId, heroResults, comicResults, favorites, onSetFavorite, setSelectedHeroId, setFavoriteResults}) => (
+const LandingPage = ({selectedHeroId, heroResults, comicResults, favorites, onSetFavorite, setSelectedHeroId, setFavoriteResults, setComics}) => (
   <div className={classNames({'LandingPage': !! selectedHeroId})}>
-    <Header selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId}/>
+    <Header selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId} setComics={setComics}/>
     {selectedHeroId && <CompleteHeroInfo hero={heroResults[selectedHeroId]} />} 
     <SearchResults
       selectedHeroId={selectedHeroId}
@@ -32,7 +32,8 @@ SearchResults.propTypes = {
   favorites: PropTypes.array,
   onSetFavorite: PropTypes.func.isRequired,
   setSelectedHeroId: PropTypes.func.isRequired,
-  setFavoriteResults: PropTypes.func.isRequired
+  setFavoriteResults: PropTypes.func.isRequired,
+  setComics: PropTypes.func.isRequired
 };
 
 SearchResults.defaultProps = {
