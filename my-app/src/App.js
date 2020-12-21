@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Axios from 'axios';
 import './App.scss';
 import LandingPage from 'Pages/LandingPage/LandingPage.jsx';
@@ -8,49 +8,71 @@ import CompleteHeroInfo from 'Organisms/CompleteHeroInfo';
 import {parseHeroes, parseComics} from 'Common/Utils';
 
 function App() {
-  const [heroes, setHeroes] = useState(null);
-  useEffect(()=> {
+  const [heroes, setHeroes] = useState();
+  useEffect(() => {
     Axios.get('https://gateway.marvel.com/v1/public/characters', {params:{
-      apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY
-    }}).then((response)=> {
+      apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY_XOFANNA
+    }}).then((response) => {
       setHeroes(parseHeroes(response.data.data.results));
-    }).catch(()=> {
+    }).catch(() => {
       console.log('Hero error');
     });
-  }, [])
+  }, []);
 
-  useEffect(()=> {
-    console.log('Heroes: ', heroes);
-  }, [heroes])
+  const [favorites, setFavorites] = useState([]);
 
-  //const [heroId, setHeroId] = useState();
+  const onSetFavorite = useCallback(heroId => {
+    if ((favorites.length < 5) && !favorites.includes(heroId)) {
+      setFavorites([...favorites, heroId]);
+    }
+    if (favorites.includes(heroId)) {
+      setFavorites(favorites.filter(id => id !== heroId));
+    }
+  }, [favorites, setFavorites]);
 
-  /*const [comics, setComics] = useState([]);
-  useEffect(()=> {
-    Axios.get(`https://gateway.marvel.com/v1/public/characters/${heroId}/comics`, {params:{
-      apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY,
-      orderBy: '-onsaleDate',
-      limit: 10
-    }}).then((response)=> {
-      setComics(parseComics(response.data.data.results));
-      console.log('Comics set');
-    }).catch(()=> {
-      console.log('comics error');
-    });
-  }, [])
-  console.log('Comics: ', comics);*/
+  const [selectedHeroId, setSelectedHeroId] = useState();
+
+  //OnSetFavorite
+  const [comics, setComics] = useState();
+  useEffect(() => {
+    if (selectedHeroId) {
+      Axios.get(`https://gateway.marvel.com/v1/public/characters/${selectedHeroId}/comics`, {params:{
+        apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY,
+        orderBy: '-onsaleDate',
+        limit: 10
+      }}).then((response) => {
+        setComics(parseComics(response.data.data.results));
+        console.log('Comics set');
+      }).catch(() => {
+        console.log('comics error');
+      });
+    }
+  }, [selectedHeroId])
+
+  const setFavoriteResults = useCallback(favorites => {
+    setHeroes(heroes.filter(hero => favorites.includes(hero.id)));
+  }, [heroes]);
+
 
   /*const [heroId, setHeroId] = useState();
-  useEffect (()=> {
+  useEffect (() => {
     Axios.get('https://gateway.marvel.com/v1/public/characters/1009368/comics', {params: {
       apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY
-    }}).then((response)=> {
+    }}).then((response) => {
       console.log('Comics: ', response);
     })
   }, [heroId])*/
 
   return (
-    heroes ? <LandingPage isHeroPage={false} count={20} content={heroes}/> : <div></div>
+    <LandingPage
+      selectedHeroId={selectedHeroId}
+      heroResults={heroes}
+      comicResults={comics}
+      favorites={favorites}
+      onSetFavorite={onSetFavorite}
+      setSelectedHeroId={setSelectedHeroId}
+      setFavoriteResults={setFavoriteResults}
+    />
   );
 
   /*return (

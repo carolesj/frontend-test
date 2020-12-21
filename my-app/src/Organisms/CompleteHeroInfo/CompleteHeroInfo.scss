@@ -1,17 +1,24 @@
 @import "Common/Styles/index.scss";
 
 .CompleteHeroInfo {
-    width: 15%;
-    margin: 128px;
-    &__title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 128px 192px;
+  &__information{
+    max-width: 350px;
+    width: 100%;
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__heart-icon {
+    fill: $white;
+    &--filled {
+      fill: $red;
     }
-    &__heart-icon {
-        fill: $white;
-        &--filled {
-            fill: $red;
-        }
-    }
+  }
 }

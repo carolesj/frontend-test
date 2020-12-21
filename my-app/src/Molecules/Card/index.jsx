@@ -5,27 +5,36 @@ import CardInfo from 'Atoms/CardInfo';
 import CardPicture from 'Atoms/CardPicture';
 import './Card.scss';
 
-const Card = ({isHero, comicName, heroName, imgUrl, isFavorite, onHeartClick, onHeroNameClick}) => (
-    <div className={classNames('Card', {'Card--thiner-card': !isHero})}>
-        <CardPicture isHero={isHero} imgUrl={imgUrl} heroName={heroName}/>
-        <CardInfo isHero={isHero} comicName={comicName} heroName={heroName} isFavorite={isFavorite} onHeartClick={()=>{}} onHeroNameClick={()=>{}}/>
-    </div>
-);
+const Card = ({comic, hero, favorites, onSetFavorite, setSelectedHeroId}) => {
+  if (hero) {
+    return (
+      <div className='Card'>
+        <CardPicture isHero name={hero.name} imgUrl={hero.thumbnail} />
+        <CardInfo isHero name={hero.name} heroId={hero.id} onSetFavorite={onSetFavorite} setSelectedHeroId={setSelectedHeroId} favorites={favorites}/>
+      </div>
+    );
+  } else {
+    return (
+      <div className='Card Card--thiner-card'>
+        <CardPicture name={comic.name} imgUrl={comic.thumbnail}/>
+        <CardInfo name={comic.title} />
+      </div>
+    );
+  }
+}
 
 export default Card;
 
 CardInfo.propTypes = {
-    isHero: PropTypes.bool,
-    heroName: PropTypes.string,
-    imgUrl: PropTypes.string,
-    isFavorite: PropTypes.bool,
-    onHeartClick: PropTypes.func.isRequired,
-    onHeroNameClick: PropTypes.func.isRequired
+  hero: PropTypes.object,
+  comic: PropTypes.object,
+  favorites: PropTypes.array,
+  onSetFavorite: PropTypes.func.isRequired,
+  onHeroNameClick: PropTypes.func.isRequired
 };
 
 CardInfo.defaultProps = {
-    isHero: true,
-    heroName: '',
-    imgUrl: '',
-    isFavorite: false
+  hero: {},
+  comic: {},
+  favorites: []
 };

@@ -1,40 +1,40 @@
 @import "Common/Styles/index.scss";
 
 .SearchBar {
-    display: flex;
-    width: 60%;
+  display: flex;
+  width: 60%;
+  height: 60px;
+  background-color: $light-red;
+  border-radius: 50px;
+
+  &__hero-page {
+    width: 50%;
     height: 60px;
-    background-color: $light-red;
-    border-radius: 50px;
+    background-color: $white;
+  }
 
-    &__hero-page {
-        width: 50%;
-        height: 30px;
-        background-color: $white;
+  &__search-icon {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 12px;
+    &--hero-page {
+      padding-top: 20px;
+      padding-left: 24px;
+      padding-right: 12px;
     }
+  }
+  &__input-field {
+    @include truncate(100%);
+    border: none;
+    outline: none;
 
-    &__search-icon {
-        padding-top: 20px;
-        padding-left: 20px;
-        padding-right: 12px;
-        &--hero-page {
-            padding-top: 7px;
-            padding-left: 10px;
-            padding-right: 6px;
-        }
-    }
-    &__input-field {
-        @include truncate(100%);
-        border: none;
-        outline: none;
+    font-size: $smallest-text-size;
+    color: $red;
     
-        font-size: $smallest-text-size;
-        color: $red;
-        
-        width: 90%;
-        background: transparent;
-        &--hero-page {
-            color: $grey;
-        }
+    width: 90%;
+    background: transparent;
+    &--hero-page {
+      color: $grey;
     }
+  }
 }

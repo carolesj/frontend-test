@@ -1,27 +1,24 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './CardPicture.scss';
 
-const CardPicture = ({imgUrl, isHero, heroName}) => {
-    const pictureAlt = useMemo(()=> isHero ? 'Comic cover' : heroName, [isHero, heroName]);
-    return (
-        <div className={classNames('CardPicture', {'CardPicture--hero': isHero})}>
-            <img src={imgUrl} alt={pictureAlt} />
-        </div>
-    );
-}
+const CardPicture = ({isHero, imgUrl, name}) => (
+  <div className={classNames('CardPicture', {'CardPicture--hero': isHero})}>
+    <img src={imgUrl} alt={name} />
+  </div>
+);
 
 CardPicture.propTypes = {
-    imgUrl: PropTypes.string,
-    isHero: PropTypes.bool,
-    heroName: PropTypes.string
+  imgUrl: PropTypes.string,
+  isHero: PropTypes.bool,
+  name: PropTypes.string
 }
 
 CardPicture.defaultProps = {
-    imgUrl: null,
-    isHero: true,
-    heroName: ''
+  imgUrl: null,
+  isHero: false,
+  name: ''
 }
 
 export default CardPicture;

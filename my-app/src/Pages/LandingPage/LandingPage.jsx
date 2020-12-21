@@ -1,15 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Header from 'Molecules/PageHeader';
 import CompleteHeroInfo from 'Organisms/CompleteHeroInfo';
 import SearchResults from 'Templates/SearchResults';
 import Footer from 'Atoms/PageFooter';
+import './LandingPage.scss';
 
-const LandingPage = ({isHeroPage, count, content, heroName, isFavorite, heroDescription, comicsCount, moviesCount, rating, lastComic}) => (
-  <div>
-    <Header isHeroPage={isHeroPage}/>
-    {isHeroPage ? <CompleteHeroInfo heroName={heroName} isFavorite={isFavorite} heroDescription={heroDescription} comicsCount={comicsCount} moviesCount={moviesCount} rating={rating} lastComic={lastComic}/> : <></>}
-    <SearchResults isHeroPage={isHeroPage} count={count} content={content}/>
+const LandingPage = ({selectedHeroId, heroResults, comicResults, favorites, onSetFavorite, setSelectedHeroId, setFavoriteResults}) => (
+  <div className={classNames({'LandingPage': !! selectedHeroId})}>
+    <Header selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId}/>
+    {selectedHeroId && <CompleteHeroInfo hero={heroResults[selectedHeroId]} />} 
+    <SearchResults
+      selectedHeroId={selectedHeroId}
+      heroResults={heroResults}
+      comicResults={comicResults}
+      favorites={favorites}
+      onSetFavorite={onSetFavorite}
+      setSelectedHeroId={setSelectedHeroId}
+      setFavoriteResults={setFavoriteResults} />
     <Footer />
   </div>
 );
@@ -17,27 +26,18 @@ const LandingPage = ({isHeroPage, count, content, heroName, isFavorite, heroDesc
 export default LandingPage;
 
 SearchResults.propTypes = {
-  isHeroPage: PropTypes.bool,
-  count: PropTypes.number,
-  content: PropTypes.string,
-  heroName: PropTypes.string,
-  isFavorite: PropTypes.bool,
-  heroDescription: PropTypes.string,
-  comicsCount: PropTypes.number,
-  moviesCount: PropTypes.number,
-  rating: PropTypes.number,
-  lastComic: PropTypes.string
+  selectedHeroId: PropTypes.string,
+  heroResults: PropTypes.object,
+  comicResults: PropTypes.object,
+  favorites: PropTypes.array,
+  onSetFavorite: PropTypes.func.isRequired,
+  setSelectedHeroId: PropTypes.func.isRequired,
+  setFavoriteResults: PropTypes.func.isRequired
 };
 
 SearchResults.defaultProps = {
-  isHeroPage: false,
-  count: 0,
-  content: '',
-  heroName: '',
-  isFavorite: false,
-  heroDescription: '',
-  comicsCount: 0,
-  moviesCount: 0,
-  rating: 0,
-  lastComic: ''
+  selectedHeroId: null,
+  heroResults: {},
+  comicResults: {},
+  favorites: []
 };

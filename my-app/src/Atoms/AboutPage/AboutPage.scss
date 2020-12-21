@@ -1,11 +1,17 @@
 .AboutPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 64px;
-    padding-left: 16px;
-    padding-right: 16px;
-    &--hero-page {
-        padding-bottom: 0px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 64px;
+  padding-left: 16px;
+  padding-right: 16px;
+  &--hero-page {
+    padding-bottom: 0px;
+  }
+  &__small-logo {
+    transform: scale(0.5);
+  }
+  &__big-logo {
+    transform: scale(1.2);
+  }
 }

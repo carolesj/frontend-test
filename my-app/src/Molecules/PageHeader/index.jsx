@@ -5,21 +5,22 @@ import AboutPage from 'Atoms/AboutPage';
 import SearchBar from 'Atoms/SearchBar';
 import './PageHeader.scss';
 
-const PageHeader = ({isHeroPage}) => (
-    <div
-        className={classNames('PageHeader', {'PageHeader--hero-page': isHeroPage})}
-    >
-        <AboutPage isHeroPage={isHeroPage} />
-        <SearchBar isHeroPage={isHeroPage} />
-    </div>
+const PageHeader = ({selectedHeroId, setSelectedHeroId}) => (
+  <div
+    className={classNames('PageHeader', {'PageHeader--hero-page': !!selectedHeroId})}
+  >
+    <AboutPage selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId} />
+    <SearchBar selectedHeroId={selectedHeroId} />
+  </div>
 );
 
 export default PageHeader;
 
 PageHeader.propTypes = {
-    isHeroPage: PropTypes.bool
+  selectedHeroId: PropTypes.string,
+  setSelectedHeroId:PropTypes.func.isRequired
 };
 
 PageHeader.defaultProps = {
-    isHeroPage: false
+  selectedHeroId: null
 };

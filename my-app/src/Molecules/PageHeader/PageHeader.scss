@@ -1,8 +1,9 @@
 .PageHeader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    &--hero-page {
-        flex-direction: row;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &--hero-page {
+    flex-direction: row;
+    padding-top: 24px;
+  }
 }

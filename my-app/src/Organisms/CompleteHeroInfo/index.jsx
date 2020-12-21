@@ -5,45 +5,43 @@ import {ReactComponent as HeartIcon} from 'Assets/Icons/Heart.svg';
 import HeroStats from 'Molecules/HeroStats';
 import './CompleteHeroInfo.scss';
 
-const CompleteHeroInfo = ({heroName, isFavorite, heroDescription, comicsCount, moviesCount, rating, lastComic, onHeartClick}) => (
-    <div className='CompleteHeroInfo'>
-        <div className='CompleteHeroInfo__title'>
-            <h2>{heroName}</h2>
-            <div
-                className={classNames('CompleteHeroInfo__heart-icon', {
-                    'CompleteHeroInfo__heart-icon--filled': isFavorite
-                })}
-                onClick={onHeartClick}
-                role='button'
-                tabIndex={0}
-            >
-                <HeartIcon />
-            </div>
+const CompleteHeroInfo = ({hero, comic, count, favorites, onSetFavorite}) => (
+  
+  <div className='CompleteHeroInfo'>
+    <div className='CompleteHeroInfo__information'>
+      <div className='CompleteHeroInfo__title'>
+        <h2>{hero.name}</h2>
+        <div
+          className={classNames('CompleteHeroInfo__heart-icon', {
+            'CompleteHeroInfo__heart-icon--filled': favorites?.includes(hero.heroId)
+          })}
+          onClick={() => onSetFavorite(hero.Id)}
+          role='button'
+          tabIndex={0}
+        >
+          <HeartIcon />
         </div>
-        <span>{heroDescription}</span>
-        <HeroStats comicsCount={comicsCount} moviesCount={moviesCount} rating={rating} lastComic={lastComic} />
+      </div>
+      <span>{hero.description}</span>
+      <HeroStats count={count} comic={comic} />
     </div>
+    <img src={hero.thumbnail} alt={hero.name} />
+  </div>
 );
 
 export default CompleteHeroInfo;
 
 HeroStats.propTypes = {
-    heroName: PropTypes.string,
-    isFavorited: PropTypes.bool,
-    heroDescription: PropTypes.string,
-    comicsCount: PropTypes.number,
-    moviesCount: PropTypes.number,
-    rating: PropTypes.number,
-    lastComic: PropTypes.string,
-    onHeartClick: PropTypes.func.isRequired,
+  hero: PropTypes.object,
+  comic: PropTypes.object,
+  count: PropTypes.number,
+  favorites: PropTypes.array,
+  onSetFavorite: PropTypes.func.isRequired
 };
 
 HeroStats.defaultProps = {
-    heroName: "",
-    isFavorited: false,
-    heroDescription: "",
-    comicsCount: 0,
-    moviesCount: 0,
-    rating: 0,
-    lastComic: "",
+  hero: {},
+  comic: {},
+  count: 0,
+  favorites: []
 };
