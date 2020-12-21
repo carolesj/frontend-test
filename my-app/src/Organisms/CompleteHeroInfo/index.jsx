@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import {ReactComponent as HeartIcon} from 'Assets/Icons/Heart.svg';
 import HeroStats from 'Molecules/HeroStats';
 import './CompleteHeroInfo.scss';
