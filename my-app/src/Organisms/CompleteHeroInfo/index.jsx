@@ -6,11 +6,7 @@ import HeroStats from 'Molecules/HeroStats';
 import './CompleteHeroInfo.scss';
 
 const CompleteHeroInfo = ({
-  hero,
-  comic,
-  count,
-  favorites,
-  onSetFavorite
+  hero
 }) => (
   
   <div className='CompleteHeroInfo'>
@@ -18,10 +14,8 @@ const CompleteHeroInfo = ({
       <div className='CompleteHeroInfo__title'>
         <h2>{hero.name}</h2>
         <div
-          className={classNames('CompleteHeroInfo__heart-icon', {
-            'CompleteHeroInfo__heart-icon--filled': favorites?.includes(hero.heroId)
-          })}
-          onClick={() => onSetFavorite(hero.Id)}
+          className='CompleteHeroInfo__heart-icon'
+          onClick={() => {}}
           role='button'
           tabIndex={0}
         >
@@ -29,7 +23,7 @@ const CompleteHeroInfo = ({
         </div>
       </div>
       <span>{hero.description}</span>
-      <HeroStats count={count} comic={comic} />
+      <HeroStats />
     </div>
     <img src={hero.thumbnail} alt={hero.name} />
   </div>
@@ -38,16 +32,9 @@ const CompleteHeroInfo = ({
 export default CompleteHeroInfo;
 
 HeroStats.propTypes = {
-  hero: PropTypes.object,
-  comic: PropTypes.object,
-  count: PropTypes.number,
-  favorites: PropTypes.array,
-  onSetFavorite: PropTypes.func.isRequired
+  hero: PropTypes.object
 };
 
 HeroStats.defaultProps = {
-  hero: {},
-  comic: {},
-  count: 0,
-  favorites: []
+  hero: {}
 };

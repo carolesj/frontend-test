@@ -16,9 +16,6 @@
     align-items: center;
   }
   &__heart-icon {
-    fill: $white;
-    &--filled {
-      fill: $red;
-    }
+    fill: $light-green;
   }
 }
