@@ -4,9 +4,15 @@ import classNames from 'classnames';
 import {ReactComponent as Logo} from 'Assets/Logo/Logo.svg';
 import './AboutPage.scss';
 
-const AboutPage = ({selectedHeroId, setSelectedHeroId}) => (
+const AboutPage = ({selectedHeroId, setSelectedHeroId, setComics}) => (
   <div className={classNames('AboutPage', {'AboutPage--hero-page': !!selectedHeroId})}>
-    {!!selectedHeroId ? <Logo className='AboutPage__small-logo' /> : <Logo className='AboutPage__big-logo' />}
+    {!!selectedHeroId ? 
+      <Logo
+        className='AboutPage__small-logo' 
+        onClick={() => {setSelectedHeroId(undefined); setComics(undefined)}}
+      />
+      : <Logo className='AboutPage__big-logo' />
+    }
     {!selectedHeroId && (
       <>
         <h2>EXPLORE O UNIVERSO</h2>
@@ -23,7 +29,8 @@ export default AboutPage;
 
 AboutPage.propTypes = {
   selectedHeroId: PropTypes.string,
-  setSelectedHeroId: PropTypes.object.isRequired
+  setSelectedHeroId: PropTypes.func.isRequired,
+  setComics: PropTypes.func.isRequired
 };
 
 AboutPage.defaultProps = {

@@ -42,12 +42,12 @@ const SearchResults = ({heroResults, comicResults, favorites, onSetFavorite, set
               {
                 heroes.map(hero => (
                   <Card
-                  isHero
-                  hero={hero}
-                  imgUrl={hero.thumbnail}
-                  onSetFavorite={onSetFavorite}
-                  favorites={favorites}
-                  setSelectedHeroId={setSelectedHeroId}
+                    isHero
+                    hero={hero}
+                    imgUrl={hero.thumbnail}
+                    onSetFavorite={onSetFavorite}
+                    favorites={favorites}
+                    setSelectedHeroId={setSelectedHeroId}
                 />
                 ))
               }
