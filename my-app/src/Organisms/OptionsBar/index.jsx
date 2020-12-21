@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Options from 'Molecules/Options';
 import './OptionsBar.scss';
 
-const OptionsBar = ({heroResults, favorites, setFavoriteResults}) => {
+const OptionsBar = ({heroResults, favorites, setShouldShowFavoriteHeroes, onChange}) => {
   let results = (Object.values(heroResults)).length;
   return (
     <div className='OptionsBar'>
       <span>{`Encontrados ${results} heróis`}</span>
-      <Options favorites={favorites} setFavoriteResults={setFavoriteResults} />
+      <Options favorites={favorites} setShouldShowFavoriteHeroes={setShouldShowFavoriteHeroes} onChange={onChange} />
     </div>
   );
 };
@@ -18,7 +18,7 @@ export default OptionsBar;
 OptionsBar.propTypes = {
   heroResults: PropTypes.object,
   favorites: PropTypes.array,
-  setFavoriteResults: PropTypes.func.isRequired
+  setShouldShowFavoriteHeroes: PropTypes.func.isRequired
 }
 
 OptionsBar.defaultProps = {

@@ -11,7 +11,8 @@ function App() {
   const [heroes, setHeroes] = useState();
   useEffect(() => {
     Axios.get('https://gateway.marvel.com/v1/public/characters', {params:{
-      apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY_XOFANNA
+      apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY,
+      orderBy: 'modified'
     }}).then((response) => {
       setHeroes(parseHeroes(response.data.data.results));
     }).catch(() => {
@@ -47,31 +48,52 @@ function App() {
         console.log('comics error');
       });
     }
-  }, [selectedHeroId])
+  }, [selectedHeroId]);
 
-  const setFavoriteResults = useCallback(favorites => {
-    setHeroes(heroes.filter(hero => favorites.includes(hero.id)));
-  }, [heroes]);
+  const [favoriteHeroes, setFavoriteHeroes] = useState();
+  const [shouldShowFavoriteHeroes, setShouldShowFavoriteHeroes] = useState(false);
 
 
-  /*const [heroId, setHeroId] = useState();
-  useEffect (() => {
-    Axios.get('https://gateway.marvel.com/v1/public/characters/1009368/comics', {params: {
-      apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY
+  useEffect(() => {
+    if (favoriteHeroes && !shouldShowFavoriteHeroes) {
+      setFavoriteHeroes(undefined);
+    } else if (!favoriteHeroes && heroes && shouldShowFavoriteHeroes) {
+      setFavoriteHeroes(Object.keys(heroes).reduce((acc, id) => {
+        if (favorites.includes(parseInt(id, 10))) {
+          return ({
+            ...acc,
+            [id]: heroes[id]
+          });
+        }
+        return acc;
+      }, {}));
+    }
+  }, [heroes, favoriteHeroes, favorites, shouldShowFavoriteHeroes]);
+
+  const onChange = shouldSortByName => {
+    const sortBy = shouldSortByName ? {} : {orderBy: 'modified'};
+    Axios.get('https://gateway.marvel.com/v1/public/characters', {params:{
+      apikey: process.env.REACT_APP_MARVEL_API_PUBLIC_KEY,
+      ...sortBy
     }}).then((response) => {
-      console.log('Comics: ', response);
+      setHeroes(parseHeroes(response.data.data.results));
+    }).catch(() => {
+      console.log('Hero error');
     })
-  }, [heroId])*/
+  };
 
   return (
     <LandingPage
       selectedHeroId={selectedHeroId}
-      heroResults={heroes}
+      heroResults={favoriteHeroes || heroes}
       comicResults={comics}
       favorites={favorites}
       onSetFavorite={onSetFavorite}
       setSelectedHeroId={setSelectedHeroId}
-      setFavoriteResults={setFavoriteResults}
+      setShouldShowFavoriteHeroes={() => (
+        setShouldShowFavoriteHeroes(!shouldShowFavoriteHeroes)
+      )}
+      onChange={onChange}
     />
   );
 

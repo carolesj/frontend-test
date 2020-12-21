@@ -7,7 +7,16 @@ import SearchResults from 'Templates/SearchResults';
 import Footer from 'Atoms/PageFooter';
 import './LandingPage.scss';
 
-const LandingPage = ({selectedHeroId, heroResults, comicResults, favorites, onSetFavorite, setSelectedHeroId, setFavoriteResults}) => (
+const LandingPage = ({
+    selectedHeroId,
+    heroResults,
+    comicResults,
+    favorites,
+    onSetFavorite,
+    setSelectedHeroId,
+    setShouldShowFavoriteHeroes,
+    onChange
+  }) => (
   <div className={classNames({'LandingPage': !! selectedHeroId})}>
     <Header selectedHeroId={selectedHeroId} setSelectedHeroId={setSelectedHeroId}/>
     {selectedHeroId && <CompleteHeroInfo hero={heroResults[selectedHeroId]} />} 
@@ -18,7 +27,8 @@ const LandingPage = ({selectedHeroId, heroResults, comicResults, favorites, onSe
       favorites={favorites}
       onSetFavorite={onSetFavorite}
       setSelectedHeroId={setSelectedHeroId}
-      setFavoriteResults={setFavoriteResults} />
+      setShouldShowFavoriteHeroes={setShouldShowFavoriteHeroes}
+      onChange={onChange} />
     <Footer />
   </div>
 );
@@ -32,7 +42,7 @@ SearchResults.propTypes = {
   favorites: PropTypes.array,
   onSetFavorite: PropTypes.func.isRequired,
   setSelectedHeroId: PropTypes.func.isRequired,
-  setFavoriteResults: PropTypes.func.isRequired
+  setShouldShowFavoriteHeroes: PropTypes.func.isRequired
 };
 
 SearchResults.defaultProps = {
