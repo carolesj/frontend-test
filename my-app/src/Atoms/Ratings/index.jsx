@@ -33,9 +33,9 @@ const Ratings = ({rating}) => {
 export default Ratings;
 
 Ratings.propTypes = {
-  rating: PropTypes.number,
+  rating: PropTypes.number
 };
 
 Ratings.defaultProps = {
-  rating: (Math.floor(Math.random() * 6)),
+  rating: (Math.floor(Math.random() * 6))
 };  
